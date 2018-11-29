@@ -85,7 +85,7 @@ end
 wire signed [15:0]out;
 fir fir_(
 		.nreset( ~reset ),
-		.fir_clk( fir_clk ),
+		.clock( fir_clk ),
 		.idata( sin_val ),
 		.odata( out )
 	);
@@ -94,7 +94,14 @@ initial
 begin
 	read_lp_coeff();
 	$dumpfile("out.vcd");
-	$dumpvars(0,tb);
+	$dumpvars(1,
+		tb.freq,
+		tb.fir_.idata,
+		tb.fir_.low_pass_filter.pwm,
+		tb.fir_.low_pass_filter.filter_val,
+		tb.fir_.low_pass_filter.filter_val_positive_r,
+		tb.fir_.low_pass_filter.pwm_out
+		);
 	
 	reset = 1;
 	#1000;
@@ -104,17 +111,17 @@ begin
 	
 	my_time=0;
 
-	for (freq=50; freq<200; freq=freq+100)
+	for (freq=50; freq<300; freq=freq+50)
 	begin
-		#80000000;
+		#60000000;
+	end
+
+	for (freq=300; freq<1000; freq=freq+100)
+	begin
+		#30000000;
 	end
 
 /*
-	for (freq=200; freq<600; freq=freq+200)
-	begin
-		#40000000;
-	end
-
 	for (freq=400; freq<600; freq=freq+100)
 	begin
 		#20000000;
@@ -145,7 +152,7 @@ begin
 		if ( scan_result!=1 ) 
 			coeff = 0;
 		//$display("coeff %d = %d",i,coeff);
-		fir_.mem_lp_coeff.mem[i] = coeff;
+		fir_.low_pass_filter.mem_coeff.mem[i] = coeff;
 	end
 end
 endtask
