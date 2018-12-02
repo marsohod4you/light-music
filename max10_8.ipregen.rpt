@@ -1,0 +1,141 @@
+IP Upgrade report for max10_8
+Sat Dec 01 22:46:29 2018
+Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. IP Upgrade Summary
+  3. Successfully Upgraded IP Components
+  4. IP Upgrade Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------+
+; IP Upgrade Summary                                                         ;
++------------------------------+---------------------------------------------+
+; IP Components Upgrade Status ; Passed - Sat Dec 01 22:46:29 2018           ;
+; Quartus Prime Version        ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
+; Revision Name                ; max10_8                                     ;
+; Top-level Entity Name        ; max10                                       ;
+; Family                       ; MAX 10                                      ;
++------------------------------+---------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Successfully Upgraded IP Components                                                                                                 ;
++-------------+--------------------+---------+---------------------------+----------------------+---------------------------+---------+
+; Entity Name ; Component Name     ; Version ; Original Source File      ; Generation File Path ; New Source File           ; Message ;
++-------------+--------------------+---------+---------------------------+----------------------+---------------------------+---------+
+; myadc       ; altera_modular_adc ; 15.0    ; myadc/synthesis/myadc.qip ; myadc.qsys           ; myadc/synthesis/myadc.qip ;         ;
+; mypll       ; ALTPLL             ; 15.0    ; mypll.qip                 ; mypll.v              ; mypll.qip                 ;         ;
++-------------+--------------------+---------+---------------------------+----------------------+---------------------------+---------+
+
+
++---------------------+
+; IP Upgrade Messages ;
++---------------------+
+Info (11902): Backing up file "myadc.qsys" to "myadc.BAK.qsys"
+Info (11902): Backing up file "myadc/synthesis/myadc.v" to "myadc.BAK.v"
+Info (11837): Started upgrading IP component altera_modular_adc with file "myadc.qsys"
+Info: 2018.12.01.23:46:12 Info: Starting to upgrade the IP cores in the Platform Designer system
+Info: 2018.12.01.23:46:12 Info: Finished upgrading the ip cores
+Info: 2018.12.01.23:46:20 Info: Saving generation log to D:/altera/MAX10/light-music/myadc
+Info: 2018.12.01.23:46:20 Info: Starting: Create simulation model
+Info: 2018.12.01.23:46:20 Info: qsys-generate D:\altera\MAX10\light-music\myadc.qsys --simulation=VERILOG --allow-mixed-language-simulation --output-directory=D:\altera\MAX10\light-music\myadc\simulation --family="MAX 10" --part=10M08SAE144C8GES
+Info: 2018.12.01.23:46:20 Info: Loading light-music
+Info: 2018.12.01.23:46:20 Info: Reading input file
+Info: 2018.12.01.23:46:20 Info: Adding modular_adc_0 [altera_modular_adc 18.0]
+Info: 2018.12.01.23:46:20 Info: Parameterizing module modular_adc_0
+Info: 2018.12.01.23:46:20 Info: Building connections
+Info: 2018.12.01.23:46:20 Info: Parameterizing connections
+Info: 2018.12.01.23:46:20 Info: Validating
+Info: 2018.12.01.23:46:20 Info: Done reading input file
+Info: 2018.12.01.23:46:21 Info: myadc: Generating myadc "myadc" for SIM_VERILOG
+Info: 2018.12.01.23:46:23 Info: modular_adc_0: "myadc" instantiated altera_modular_adc "modular_adc_0"
+Info: 2018.12.01.23:46:23 Info: control_internal: "modular_adc_0" instantiated altera_modular_adc_control "control_internal"
+Info: 2018.12.01.23:46:23 Info: myadc: Done "myadc" with 3 modules, 8 files
+Info: 2018.12.01.23:46:23 Info: qsys-generate succeeded.
+Info: 2018.12.01.23:46:23 Info: Finished: Create simulation model
+Info: 2018.12.01.23:46:23 Info: Starting: Create Modelsim Project.
+Info: 2018.12.01.23:46:23 Info: sim-script-gen --spd=D:\altera\MAX10\light-music\myadc\myadc.spd --output-directory=D:/altera/MAX10/light-music/myadc/simulation
+Info: 2018.12.01.23:46:23 Info: Doing: ip-make-simscript --spd=D:\altera\MAX10\light-music\myadc\myadc.spd --output-directory=D:/altera/MAX10/light-music/myadc/simulation
+Info: 2018.12.01.23:46:24 Info: Generating the following file(s) for MODELSIM simulator in D:/altera/MAX10/light-music/myadc/simulation
+Info: 2018.12.01.23:46:24 Info:     mentor
+Info: 2018.12.01.23:46:24 Info: Generating the following file(s) for VCS simulator in D:/altera/MAX10/light-music/myadc/simulation
+Info: 2018.12.01.23:46:24 Info:     synopsys/vcs
+Info: 2018.12.01.23:46:24 Info: Generating the following file(s) for VCSMX simulator in D:/altera/MAX10/light-music/myadc/simulation
+Info: 2018.12.01.23:46:24 Info:     synopsys/vcsmx
+Info: 2018.12.01.23:46:24 Info:     synopsys/vcsmx
+Info: 2018.12.01.23:46:24 Info: Generating the following file(s) for NCSIM simulator in D:/altera/MAX10/light-music/myadc/simulation
+Info: 2018.12.01.23:46:24 Info:     cadence
+Info: 2018.12.01.23:46:24 Info:     cadence
+Info: 2018.12.01.23:46:24 Info:     cadence
+Info: 2018.12.01.23:46:24 Info:     2 .cds.lib files in cadence/cds_libs
+Info: 2018.12.01.23:46:24 Info: Generating the following file(s) for RIVIERA simulator in D:/altera/MAX10/light-music/myadc/simulation
+Info: 2018.12.01.23:46:24 Info:     aldec
+Info: 2018.12.01.23:46:24 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under D:/altera/MAX10/light-music/myadc/simulation
+Info: 2018.12.01.23:46:24 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info: 2018.12.01.23:46:24 Info: Finished: Create Modelsim Project.
+Info: 2018.12.01.23:46:24 Info: Starting: Create block symbol file (.bsf)
+Info: 2018.12.01.23:46:24 Info: qsys-generate D:\altera\MAX10\light-music\myadc.qsys --block-symbol-file --output-directory=D:\altera\MAX10\light-music\myadc --family="MAX 10" --part=10M08SAE144C8GES
+Info: 2018.12.01.23:46:24 Info: Loading light-music
+Info: 2018.12.01.23:46:24 Info: Reading input file
+Info: 2018.12.01.23:46:24 Info: Adding modular_adc_0 [altera_modular_adc 18.0]
+Info: 2018.12.01.23:46:24 Info: Parameterizing module modular_adc_0
+Info: 2018.12.01.23:46:24 Info: Building connections
+Info: 2018.12.01.23:46:24 Info: Parameterizing connections
+Info: 2018.12.01.23:46:24 Info: Validating
+Info: 2018.12.01.23:46:24 Info: Done reading input file
+Info: 2018.12.01.23:46:25 Info: qsys-generate succeeded.
+Info: 2018.12.01.23:46:25 Info: Finished: Create block symbol file (.bsf)
+Info: 2018.12.01.23:46:25 Info:
+Info: 2018.12.01.23:46:25 Info: Starting: Create HDL design files for synthesis
+Info: 2018.12.01.23:46:25 Info: qsys-generate D:\altera\MAX10\light-music\myadc.qsys --synthesis=VERILOG --output-directory=D:\altera\MAX10\light-music\myadc\synthesis --family="MAX 10" --part=10M08SAE144C8GES
+Info: 2018.12.01.23:46:25 Info: Loading light-music
+Info: 2018.12.01.23:46:25 Info: Reading input file
+Info: 2018.12.01.23:46:25 Info: Adding modular_adc_0 [altera_modular_adc 18.0]
+Info: 2018.12.01.23:46:25 Info: Parameterizing module modular_adc_0
+Info: 2018.12.01.23:46:25 Info: Building connections
+Info: 2018.12.01.23:46:25 Info: Parameterizing connections
+Info: 2018.12.01.23:46:25 Info: Validating
+Info: 2018.12.01.23:46:26 Info: Done reading input file
+Info: 2018.12.01.23:46:26 Info: myadc: Generating myadc "myadc" for QUARTUS_SYNTH
+Info: 2018.12.01.23:46:27 Info: modular_adc_0: "myadc" instantiated altera_modular_adc "modular_adc_0"
+Info: 2018.12.01.23:46:27 Info: control_internal: "modular_adc_0" instantiated altera_modular_adc_control "control_internal"
+Info: 2018.12.01.23:46:27 Info: myadc: Done "myadc" with 3 modules, 9 files
+Info: 2018.12.01.23:46:28 Info: qsys-generate succeeded.
+Info: 2018.12.01.23:46:28 Info: Finished: Create HDL design files for synthesis
+Info (11902): Backing up file "mypll.v" to "mypll.BAK.v"
+Info (11837): Started upgrading IP component ALTPLL with file "mypll.v"
+Info (11131): Completed upgrading IP component altera_modular_adc with file "myadc.qsys"
+Info (11131): Completed upgrading IP component ALTPLL with file "mypll.v"
+Info (23030): Evaluation of Tcl script d:/altera/18.0/quartus/common/tcl/internal/ip_regen/ip_regen.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 4939 megabytes
+    Info: Processing ended: Sat Dec 01 22:46:30 2018
+    Info: Elapsed time: 00:00:36
+    Info: Total CPU time (on all processors): 00:01:25
+
+
