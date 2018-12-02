@@ -1,0 +1,5 @@
+output_files/*
+db/*
+greybox_tmp/*
+ip_upgrade_port_diff_reports/*
+incremental_db/*
