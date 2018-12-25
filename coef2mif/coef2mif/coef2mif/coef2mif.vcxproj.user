@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LocalDebuggerCommandArguments>coeff_bp_50k_55_125_260_430.txt coeff_bp_50k_400_500_2000_2500.txt coeff_bp_50k_2300_2600_10000_10300.txt coeff_hp_50k_0_10000_10300_25000.txt</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)\..\Debug</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
+</Project>
