@@ -14,7 +14,7 @@ always
 reg fir_clk;
 initial fir_clk=0;
 always
-	#6 fir_clk = ~fir_clk;
+	#19.531 fir_clk = ~fir_clk;
 	//#6.103515625 fir_clk = ~fir_clk;
 
 //function calculating sinus 
@@ -72,88 +72,95 @@ end
 
 real my_time;
 real sin_real;
-reg signed [15:0]sin_val;
+reg signed [11:0]sin_val;
 
 //generate requested "freq" sinus
 always @(posedge cnt_edge)
 begin
 	sin_real <= sin(my_time);
-	sin_val  <= sin_real*32000;
+	sin_val  <= sin_real*2047+2047;
 	my_time  <= my_time+3.14159265*2/64;
 end
 
-wire signed [15:0]out;
-fir fir_(
+wire signed [47:0]out;
+wire out_rdy;
+fir_filter fir_(
 		.nreset( ~reset ),
-		.clock( fir_clk ),
-		.idata( sin_val ),
-		.odata( out )
+		.clk( fir_clk ),
+		.idata12( sin_val ),
+		.out_val( out ),
+		.out_ready( out_rdy )
 	);
 
 initial
 begin
-	read_lp_coeff();
 	$dumpfile("out.vcd");
+		
 	$dumpvars(1,
 		tb.freq,
-		tb.fir_.idata,
-		tb.fir_.low_pass_filter.pwm,
-		tb.fir_.low_pass_filter.filter_val,
-		tb.fir_.low_pass_filter.filter_val_positive_r,
-		tb.fir_.low_pass_filter.pwm_out
+		tb.fir_.idata12,
+		tb.fir_.out_val
 		);
-	
+
 	reset = 1;
 	#1000;
 	reset = 0;
 	
-	read_lp_coeff();
+	//read_lp_coeff();
+	read_bp_coeff();
 	
 	my_time=0;
 
-	for (freq=50; freq<300; freq=freq+50)
-	begin
-		#60000000;
-	end
-
-	for (freq=300; freq<1000; freq=freq+100)
-	begin
-		#30000000;
-	end
-
-/*
-	for (freq=400; freq<600; freq=freq+100)
+	for ( freq=300; freq<4000; freq=freq+200 )
 	begin
 		#20000000;
+		if( freq>1000 )
+			freq=freq+200;
 	end
 
-	for (freq=1500; freq<18000; freq=freq+500)
-	begin
-		#10000000;
-	end
-*/
 	$finish; 
 end
 
-integer file_lp_filter;
+integer file_filter;
 integer i;
 integer scan_result;
 reg signed [15:0]coeff;
+/*
 task read_lp_coeff;
 begin
-	file_lp_filter = $fopen("coeff_lp_195_300.txt", "r");
-	if (file_lp_filter == 0) begin
-		$display("file_lp_filter handle was NULL");
+	file_filter = $fopen("coeff_lp_195_300.txt", "r");
+	if (file_filter == 0) begin
+		$display("file lp filter handle was NULL");
 		$finish;
 	end
 	for( i=0; i<512; i=i+1 )
 	begin
-		scan_result = $fscanf(file_lp_filter, "%d\n", coeff); 
+		scan_result = $fscanf(file_filter, "%d\n", coeff); 
 		if ( scan_result!=1 ) 
 			coeff = 0;
 		//$display("coeff %d = %d",i,coeff);
 		fir_.low_pass_filter.mem_coeff.mem[i] = coeff;
 	end
+	$fclose(file_filter);
+end
+endtask
+*/
+task read_bp_coeff;
+begin
+	file_filter = $fopen("coeffs/mid/fresp_700_2700.txt", "r");
+	if (file_filter == 0) begin
+		$display("file bp filter handle was NULL");
+		$finish;
+	end
+	for( i=0; i<512; i=i+1 )
+	begin
+		scan_result = $fscanf(file_filter, "%d\n", coeff); 
+		if ( scan_result!=1 ) 
+			coeff = 0;
+		//$display("coeff %d = %d",i,coeff);
+		fir_.mem_coeff.mem[i] = coeff;
+	end
+	$fclose(file_filter);
 end
 endtask
 
